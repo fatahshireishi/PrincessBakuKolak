@@ -29,6 +29,7 @@ public class WordDisplay : MonoBehaviour
          * (robi)
          * (robin)
          */
+
         string LetterColor = "<color=#fff321>" + letter + "</color>";
         /*
          * (r(Color yellow))
@@ -37,6 +38,7 @@ public class WordDisplay : MonoBehaviour
          * (robi(Color yellow))
          * (robin(Color yellow))
          */
+
         wordCurrent = wordCurrent.Remove(0, 1);
         /*
          * (obin)
@@ -45,6 +47,7 @@ public class WordDisplay : MonoBehaviour
          * (n)
          * ()
          */
+
         text.text = LetterColor + wordCurrent;
         /*
          * (r(color yellow)obin)
