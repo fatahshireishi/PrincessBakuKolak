@@ -499,6 +499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   words: []
+  wordCount: 3
 --- !u!114 &967927434
 MonoBehaviour:
   m_ObjectHideFlags: 0

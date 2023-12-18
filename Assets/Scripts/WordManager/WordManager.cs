@@ -48,7 +48,7 @@ public class WordManager : MonoBehaviour
                 {
                     activeWord = word;
                     hasActiveWord = true;
-                    word.TypeLetter();
+                    activeWord.TypeLetter();
                     break;
                 }
             }
