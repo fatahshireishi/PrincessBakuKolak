@@ -8,10 +8,8 @@ public class WordSpawner : MonoBehaviour
     [SerializeField] Transform wordCanvas;
 
     public WordDisplay SpawnWord()
-    {
-        Vector3 randomPosition = new Vector3(Random.Range(-7.5f, 7.5f), 2.25f);
-        GameObject wordObj = Instantiate(wordPrefab, randomPosition,Quaternion.identity, wordCanvas);
-
+    { 
+        GameObject wordObj = Instantiate(wordPrefab, wordCanvas);
         return wordObj.GetComponent<WordDisplay>();
     }
 }

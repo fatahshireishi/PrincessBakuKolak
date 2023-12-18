@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class WordManager : MonoBehaviour
@@ -24,14 +23,15 @@ public class WordManager : MonoBehaviour
         }
     }
 
-    void AddWord()
+    private void AddWord()
     {
         Word word = new Word(WordGenerator.GetRandomWord(), spawner.SpawnWord());
 
+        Debug.Log(word.word);
         words.Add(word);
     }
 
-    public void TypeLetter(char letter)
+    public void TypeLatter(char letter)
     {
         if (hasActiveWord)
         {
@@ -48,7 +48,7 @@ public class WordManager : MonoBehaviour
                 {
                     activeWord = word;
                     hasActiveWord = true;
-                    activeWord.TypeLetter();
+                    word.TypeLetter();
                     break;
                 }
             }

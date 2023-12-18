@@ -27,8 +27,8 @@ public class Word
 
     public void TypeLetter()
     {
-        wordDisplay.EditLetter(word[typeIndex]);
         typeIndex++;
+            wordDisplay.RemoveLetter();
     }
 
     public bool WordTyped()
