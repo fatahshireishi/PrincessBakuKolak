@@ -62,9 +62,4 @@ public class WordDisplay : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    void EditColorText()
-    {
-
-    }
 }
