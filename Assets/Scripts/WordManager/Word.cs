@@ -1,20 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
 public class Word
 {
     public string word;
+    public float proggres;
 
     public int typeIndex;
 
-    WordDisplay wordDisplay;
+    public WordDisplay wordDisplay;
 
-    public Word(string _word, WordDisplay _wordDisplay)
+    public Word(WordSO _word, WordDisplay _wordDisplay)
     {
-        word = _word;
+        word = _word.name;
+        proggres = _word.proggres;
         typeIndex = 0;
         wordDisplay = _wordDisplay;
         wordDisplay.SetWord(word);
@@ -39,5 +43,10 @@ public class Word
             wordDisplay.RemoveWord();
         }
         return wordTyped;
+    }
+
+    public Vector3 GetLocationWord()
+    {
+        return wordDisplay.transform.position;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WordManager : MonoBehaviour
@@ -9,29 +10,30 @@ public class WordManager : MonoBehaviour
     bool hasActiveWord;
     Word activeWord;
 
-    [SerializeField] int wordCount = 1;
-
     WordSpawner spawner;
+
+    float Proggres;
+
+    [SerializeField] List<Transform> spawnLocation;
 
     // Start is called before the first frame update
     void Start()
     {
         spawner = GetComponent<WordSpawner>();
-        for (int i = 0; i < wordCount; i++)
+        for (int i = 0; i < spawnLocation.Count; i++)
         {
-            AddWord();
+            AddWord(spawnLocation[i].position);
         }
     }
 
-    private void AddWord()
+    private void AddWord(Vector3 position)
     {
-        Word word = new Word(WordGenerator.GetRandomWord(), spawner.SpawnWord());
+        Word word = new Word(GameManager.Instance.GenerateNewWord(), spawner.SpawnWord(position));
 
-        Debug.Log(word.word);
         words.Add(word);
     }
 
-    public void TypeLatter(char letter)
+    public void TypeLetter(char letter)
     {
         if (hasActiveWord)
         {
@@ -57,7 +59,23 @@ public class WordManager : MonoBehaviour
         if(hasActiveWord && activeWord.WordTyped())
         {
             hasActiveWord = false;
+            Proggres += activeWord.proggres;
+            GameManager.Instance.ChangePoseCharacter(true, Random.Range(0, 5));
+            GameManager.Instance.FillGaugecharacter(true, Proggres);
+            // Win Condition
+            if (Proggres >= 1)
+            {
+                GameManager.Instance.PlayerAttack();
+                for (int i = 0; i < words.Count; i++)
+                {
+                    Destroy(words[i].wordDisplay.gameObject);
+                }
+                words.Clear();
+                return;
+            }
+            AddWord(activeWord.GetLocationWord());
             words.Remove(activeWord);
         }
     }
 }
+
