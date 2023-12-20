@@ -10,6 +10,7 @@ public class Word
 {
     public string word;
     public float proggres;
+    public float enemyPlusProggres;
 
     public int typeIndex;
 
@@ -19,6 +20,7 @@ public class Word
     {
         word = _word.name;
         proggres = _word.proggres;
+        enemyPlusProggres = _word.enemyPlusProggres;
         typeIndex = 0;
         wordDisplay = _wordDisplay;
         wordDisplay.SetWord(word);
@@ -33,6 +35,11 @@ public class Word
     {
         wordDisplay.EditLetter(word[typeIndex]);
         typeIndex++;
+    }
+
+    public void WrongLetter()
+    {
+        wordDisplay.EditWrongLetter();
     }
 
     public bool WordTyped()

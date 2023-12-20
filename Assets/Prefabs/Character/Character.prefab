@@ -100,3 +100,5 @@ MonoBehaviour:
   charPose:
   - {fileID: 21300000, guid: 2096116b460c6714b856e8ae45cf5e29, type: 3}
   - {fileID: 21300000, guid: b14ca35263d782b4e8f114943755d9b6, type: 3}
+  - {fileID: 21300000, guid: fa1cf87646ca23e4da0932a5167eaa0f, type: 3}
+  charLose: {fileID: 21300000, guid: 2515ef34111a0af489c5a78a3f77f313, type: 3}
