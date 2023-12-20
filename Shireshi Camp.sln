@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Febucci.Attributes.Runtime"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Febucci.TextAnimator.TMP.Runtime", "Febucci.TextAnimator.TMP.Runtime.csproj", "{5BF1582C-14DE-B843-106F-8F4BA13BE427}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{B269EFD7-5D96-DBDD-D3AC-F86B90F153B1}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Febucci.TextAnimator.Editor", "Febucci.TextAnimator.Editor.csproj", "{8598CE60-8064-F79B-C074-0168A5DC46F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Febucci.Attributes.Editor", "Febucci.Attributes.Editor.csproj", "{9388248B-BD09-D3B6-F4C2-F1319C176D6A}"
@@ -41,6 +43,10 @@ Global
 		{5BF1582C-14DE-B843-106F-8F4BA13BE427}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BF1582C-14DE-B843-106F-8F4BA13BE427}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BF1582C-14DE-B843-106F-8F4BA13BE427}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B269EFD7-5D96-DBDD-D3AC-F86B90F153B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B269EFD7-5D96-DBDD-D3AC-F86B90F153B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B269EFD7-5D96-DBDD-D3AC-F86B90F153B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B269EFD7-5D96-DBDD-D3AC-F86B90F153B1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8598CE60-8064-F79B-C074-0168A5DC46F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8598CE60-8064-F79B-C074-0168A5DC46F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8598CE60-8064-F79B-C074-0168A5DC46F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
