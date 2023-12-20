@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
                 if (proggres >= 1)
                 {
                     GameManager.Instance.EnemyAttack();
+                    Data.isPlayerWin = false;
                     return;
                 }
                 ResetValue();

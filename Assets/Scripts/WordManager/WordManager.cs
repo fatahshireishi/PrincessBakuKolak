@@ -73,6 +73,7 @@ public class WordManager : MonoBehaviour
             // Win Condition
             if (Proggres >= 1)
             {
+                Data.isPlayerWin = true;
                 GameManager.Instance.PlayerAttack();
                 return;
             }

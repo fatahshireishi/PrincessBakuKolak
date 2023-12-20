@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] WordManager wordManager;
 
+    [SerializeField] LevelController levelController;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -109,5 +111,11 @@ public class GameManager : MonoBehaviour
     public void MultipleProggresEnemy(float newMultiple)
     {
         enemy.MultiplePlusProggres(newMultiple);
+    }
+
+    public void LoadLevel()
+    {
+        LevelController newLevel = Instantiate(levelController, Vector3.zero, Quaternion.identity).GetComponent<LevelController>();
+        newLevel.LoadNextLevel();
     }
 }
