@@ -56,19 +56,19 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Gauge\GaugeManager.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\WordManager\Word.cs" />
     <Compile Include="Assets\Scripts\WordManager\WordGenerator.cs" />
+    <Compile Include="Assets\Scripts\Character\CharacterPose.cs" />
+    <Compile Include="Assets\Scripts\Character\SpawnCharacterAttack.cs" />
     <Compile Include="Assets\Scripts\WordManager\WordManager.cs" />
     <Compile Include="Assets\Scripts\WordManager\WordInput.cs" />
+    <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\WordManager\WordSO.cs" />
     <Compile Include="Assets\Scripts\WordManager\WordDisplay.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\WordManager\WordSpawner.cs" />
-    <Compile Include="Assets\Scripts\Character\CharacterPose.cs" />
-    <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
-    <Compile Include="Assets\Scripts\Gauge\GaugeManager.cs" />
-    <Compile Include="Assets\Scripts\WordManager\WordSO.cs" />
-    <Compile Include="Assets\Scripts\Character\SpawnCharacterAttack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -345,6 +345,9 @@
     <Reference Include="Unity.Burst.Cecil.Pdb">
       <HintPath>Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -371,9 +374,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>Library\PackageCache\com.unity.analytics@3.6.12\Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.15f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>

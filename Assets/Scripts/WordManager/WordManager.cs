@@ -6,15 +6,14 @@ using UnityEngine;
 public class WordManager : MonoBehaviour
 {
     public List<Word> words;
-
-    bool hasActiveWord;
     Word activeWord;
 
     WordSpawner spawner;
+    [SerializeField] List<Transform> spawnLocation;
+
+    bool hasActiveWord;
 
     float Proggres;
-
-    [SerializeField] List<Transform> spawnLocation;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +65,7 @@ public class WordManager : MonoBehaviour
             if (Proggres >= 1)
             {
                 GameManager.Instance.PlayerAttack();
+                GameManager.Instance.CharacterLose(false);
                 for (int i = 0; i < words.Count; i++)
                 {
                     Destroy(words[i].wordDisplay.gameObject);

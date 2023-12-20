@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterPose : MonoBehaviour
 {
     [SerializeField] List<Sprite> charPose;
+    [SerializeField] Sprite charLose;
 
     SpriteRenderer sprite;
 
@@ -22,5 +23,10 @@ public class CharacterPose : MonoBehaviour
                 sprite.sprite = charPose[i];
             }
         }
+    }
+
+    public void GetPoseCharacterLose()
+    {
+        sprite.sprite = charLose;
     }
 }

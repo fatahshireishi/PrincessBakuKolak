@@ -6,26 +6,34 @@ using UnityEngine;
 public class SpawnCharacterAttack : MonoBehaviour
 {
     [SerializeField] GameObject objectToSpawn;
-    [SerializeField] float duration = 2.0f;
-    [SerializeField] float moveXValue = -100.0f;
+    [SerializeField] List<float> duration;
+    [SerializeField] List<float> moveXValue;
     [SerializeField] bool isCharacter;
 
     Vector3 startPosition;
 
     public void SpawnNewCharacterAttack()
     {
-        GameObject gameObject = Instantiate(objectToSpawn, transform.position, Quaternion.identity, transform);
+        GameObject gameObject = Instantiate(objectToSpawn, transform.position, Quaternion.identity);
         startPosition = gameObject.transform.position;
         DoMove(gameObject);
     }
 
     void DoMove(GameObject gameObject)
     {
-        startPosition.x += moveXValue;
-        gameObject.transform.DOMoveX(startPosition.x, duration).SetEase(Ease.InSine).OnComplete(() =>
+        startPosition.x += moveXValue[0];
+        gameObject.transform.DOMoveX(startPosition.x, duration[0]).OnComplete(() =>
         {
-            GameManager.Instance.ShowCharacter(isCharacter, true);
-            Destroy(gameObject);
+            startPosition.x += moveXValue[1];
+            gameObject.transform.DOMoveX(startPosition.x, duration[1]).OnComplete(() =>
+            {
+                startPosition.x += moveXValue[2];
+                gameObject.transform.DOMoveX(startPosition.x, duration[2]).OnComplete(() =>
+                {
+                    GameManager.Instance.ShowCharacter(isCharacter, true);
+                    Destroy(gameObject);
+                });
+            });
         });
     }
 }

@@ -22,13 +22,22 @@ public class GameManager : MonoBehaviour
         if (Instance == null) Instance = this;
     }
 
-    public void ChangePoseCharacter(bool isCharcater, int indexPose)
+    public void ChangePoseCharacter(bool isCharcater, int indexPose = 1)
     {
         // Change player pose
         if (isCharcater) playerPose.GetPoseCharacter(indexPose);
 
         // Change enemy pose
         else enemyPose.GetPoseCharacter(indexPose);
+    }
+
+    public void CharacterLose(bool isCharcater)
+    {
+        // Change player lose pose
+        if (isCharcater) playerPose.GetPoseCharacterLose();
+
+        // Change enemy lose pose
+        else enemyPose.GetPoseCharacterLose();
     }
 
     public void ShowCharacter(bool isCharacter, bool isShow)
