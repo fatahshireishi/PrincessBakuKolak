@@ -17,18 +17,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] SpawnCharacterAttack spawnPlayerAttack;
     [SerializeField] SpawnCharacterAttack spawnEnemyAttack;
 
+    [SerializeField] Enemy enemy;
+
+    [SerializeField] WordManager wordManager;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
     }
 
-    public void ChangePoseCharacter(bool isCharcater, int indexPose = 1)
+    public void ChangePoseCharacter(bool isPlayer)
     {
         // Change player pose
-        if (isCharcater) playerPose.GetPoseCharacter(indexPose);
+        if (isPlayer) playerPose.GetPoseCharacter();
 
         // Change enemy pose
-        else enemyPose.GetPoseCharacter(indexPose);
+        else enemyPose.GetPoseCharacter();
     }
 
     public void CharacterLose(bool isCharcater)
@@ -58,6 +62,11 @@ public class GameManager : MonoBehaviour
         else gaugeEnemy.FillImage(fill);
     }
 
+    public Vector3 GetPositionGauge(bool isPlayer)
+    {
+        return isPlayer ? gaugePlayer.gameObject.transform.position : gaugeEnemy.gameObject.transform.position;
+    }
+
     public WordSO GenerateNewWord()
     {
         // Get random word
@@ -67,6 +76,10 @@ public class GameManager : MonoBehaviour
     public void PlayerAttack()
     {
         ShowCharacter(true, false);
+        CharacterLose(false);
+        GameOver();
+        enemy.EnemyLose();
+
         // Spawn gameObject Attack player
         spawnPlayerAttack.SpawnNewCharacterAttack();
     }
@@ -74,7 +87,27 @@ public class GameManager : MonoBehaviour
     public void EnemyAttack()
     {
         ShowCharacter(false, false);
+        CharacterLose(true);
+        GameOver();
+
         // Spawn gameObject Attack enemy
         spawnEnemyAttack.SpawnNewCharacterAttack();
+    }
+
+    public void GameOver()
+    {
+        wordManager.WordGameOver();
+    }
+
+    public void SpawnTyping(Vector3 position)
+    {
+        if (wordManager.isGameOver) return;
+
+        wordManager.AddWord(position);
+    }
+
+    public void MultipleProggresEnemy(float newMultiple)
+    {
+        enemy.MultiplePlusProggres(newMultiple);
     }
 }

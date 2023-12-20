@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\WordManager\WordInput.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
     <Compile Include="Assets\Scripts\WordManager\WordSO.cs" />
+    <Compile Include="Assets\Scripts\Character\Enemy\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\WordManager\WordDisplay.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\WordManager\WordSpawner.cs" />
