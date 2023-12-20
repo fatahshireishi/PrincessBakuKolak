@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class WordGenerator : MonoBehaviour
 {
-    private static string[] wordList = { "sidewalk", "robin", "three" };
+    [SerializeField] List<WordSO> wordList = new List<WordSO>();
 
-    public static string GetRandomWord()
+    public WordSO GetRandomWord()
     {
-        int randomIndex = UnityEngine.Random.Range(0, wordList.Length);
-        string randomWord = wordList[randomIndex];
+        int randomIndex = UnityEngine.Random.Range(0, wordList.Count);
+        WordSO randomWord = wordList[randomIndex];
 
         return randomWord;
     }
