@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class GameOverManager : MonoBehaviour
 {
-    [SerializeField] GameObject obj;
+    [SerializeField] GameObject winObj;
+    [SerializeField] GameObject loseObj;
 
     private void Start()
     {
         if (!Data.isPlayerWin)
         {
-            obj.SetActive(false);
+            loseObj.SetActive(true);
+            winObj.SetActive(false);
         }
+        else
+        {
+            winObj.SetActive(true);
+            loseObj.SetActive(false);
+        }
+
     }
 }

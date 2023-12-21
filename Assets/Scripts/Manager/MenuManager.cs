@@ -9,4 +9,9 @@ public class MenuManager : MonoBehaviour
     {
         AudioManager.Instance.PlaySound("MainTheme");
     }
+
+    public void GameExit()
+    {
+        Application.Quit();
+    }
 }
