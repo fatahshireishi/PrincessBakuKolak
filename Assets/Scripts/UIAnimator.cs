@@ -16,14 +16,16 @@ public class UIAnimator : MonoBehaviour
         outline = GetComponent<Outline>();
     }
     public void Hover() {
+        if (Credit.Instance.initSelect) Credit.Instance.initSelect = false;
+        else AudioManager.Instance.PlaySound("MenuHover");
         GetComponent<RectTransform>().DOScale(1.1f, 0.1f);
-        GetComponent<RectTransform>().DOMoveY(yPos + 0.05f, 0.2f);
+        GetComponent<RectTransform>().DOMoveY(yPos + 0.05f, 0.1f);
         GetComponent<Image>().DOColor(Color.white, 0.15f);
         outline.enabled = true;
     }
     public void Unhover() {
         GetComponent<RectTransform>().DOScale(1f, 0.1f);
-        GetComponent<RectTransform>().DOMoveY(yPos, 0.2f);
+        GetComponent<RectTransform>().DOMoveY(yPos, 0.1f);
         GetComponent<Image>().DOColor(color, 0.15f);
         outline.enabled = false;
     }

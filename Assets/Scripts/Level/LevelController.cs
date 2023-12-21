@@ -23,7 +23,7 @@ public class LevelController : MonoBehaviour
     IEnumerator LoadLevel()
     {
         anim.SetTrigger("Start");
-
+        AudioManager.Instance.PlaySound("MenuClick");
         yield return new WaitForSeconds(DurationTransition);
 
         SceneManager.LoadScene(nextScene);

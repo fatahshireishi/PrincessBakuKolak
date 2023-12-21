@@ -12,6 +12,7 @@ public class Credit : MonoBehaviour
 
     bool creditState;
     bool backCredit;
+    public bool initSelect = true;
 
     [SerializeField] float speedSkip = 15f;
     [SerializeField] Image imageSkip;
@@ -20,6 +21,7 @@ public class Credit : MonoBehaviour
 
     private void Awake() {
         if (Instance == null) Instance = this;
+        this.gameObject.SetActive(false);
     }
     private void Start() {
         creditState = false;
@@ -27,7 +29,8 @@ public class Credit : MonoBehaviour
     }
 
     public void ShowCredit() {
-        if (!creditState) {
+        if (!creditState && !backCredit) {
+            AudioManager.Instance.PlaySound("MenuClick");
             creditState = true;
             backCredit = true;
             mainCanvas.DOFade(0, 0.5f).OnComplete(() => {    
@@ -40,12 +43,15 @@ public class Credit : MonoBehaviour
     }
     public void HideCredit() {
         if (creditState) {
+            AudioManager.Instance.PlaySound("MenuClick");
             creditState = false;
             creditCanvas.DOFade(0, 0.5f).OnComplete(() => {
                 creditCanvas.gameObject.SetActive(false);
                 whiteBlock.DOFade(0f, 0.5f).OnComplete(() => {
                     mainCanvas.gameObject.SetActive(true);
-                    mainCanvas.DOFade(1, 1f);
+                    mainCanvas.DOFade(1, 1f).OnComplete(() => {
+                        //backCredit = false;
+                    });
                     imageSkip.transform.DOScale(0, 0f);
                     ValueImageSkip = 0;
                     backCredit = false;

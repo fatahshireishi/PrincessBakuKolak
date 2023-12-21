@@ -52,6 +52,7 @@ public class PrologManager : MonoBehaviour
                 else
                 {
                     isSkip = true;
+                    AudioManager.Instance.PlaySound("MenuClick");
                     levelController.LoadNextLevel();
                 }
             }

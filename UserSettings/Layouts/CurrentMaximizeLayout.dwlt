@@ -224,9 +224,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 66030100
-      m_LastClickedID: 66406
-      m_ExpandedIDs: b0c7feffa02fffffc235ffffd63affff2a3cffff063dffff4450ffff9667ffffa668ffffb075ffffc477ffff6c78ffffa078ffffcc78ffffea78ffff1279ffff5ea0ffff06a1ffff92a3ffffd0a3fffff0a3ffff18a4ffffc2e7ffff06e9ffff1afbffff1efbffff26fbffff48750000d67500003ca40000caa400007acd000086cd0000f6f0000040f100003ef200004af20000ccf2000054f300007cf300000ef400001af4000042f4000060f400009cf40000cef40000faf400005c0301006e030100
+      m_SelectedIDs: a89cfeff
+      m_LastClickedID: -90968
+      m_ExpandedIDs: aa9cfeffb0c7feffa02fffffc235ffffd63affff2a3cffff063dffff4450ffff9667ffffa668ffffb075ffffc477ffff6c78ffffa078ffffcc78ffffea78ffff1279ffff5ea0ffff06a1ffff92a3ffffd0a3fffff0a3ffff18a4ffffc2e7ffff06e9ffff1afbffff1efbffff26fbffff48750000d67500003ca40000caa400007acd000086cd0000f6f0000040f100003ef200004af20000ccf2000054f300007cf300000ef400001af4000042f4000060f400009cf40000cef40000faf400005c0301006e030100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -705,22 +705,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites/UI
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Sprites/UI
+  - Assets/Scenes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Practice Projects\Shireshi Camp
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 259}
-    m_SelectedIDs: 0a8d0000
-    m_LastClickedID: 36106
-    m_ExpandedIDs: 0000000016790000187900001a7900001c7900001e7900002079000022790000247900002679000028790000128b000000ca9a3b
+    scrollPos: {x: 0, y: 139}
+    m_SelectedIDs: c6790000
+    m_LastClickedID: 31174
+    m_ExpandedIDs: 0000000016790000187900001a7900001c7900001e790000207900002279000024790000267900002879000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -773,8 +773,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 66030100
-    m_LastClickedInstanceID: 66406
+    m_SelectedInstanceIDs: a89cfeff
+    m_LastClickedInstanceID: -90968
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:

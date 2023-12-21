@@ -355,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &258520761
 RectTransform:
   m_ObjectHideFlags: 0
@@ -413,6 +413,7 @@ MonoBehaviour:
   whiteBlock: {fileID: 1766344062}
   mainCanvas: {fileID: 1101591011}
   creditCanvas: {fileID: 258520764}
+  initSelect: 1
   speedSkip: 1.5
   imageSkip: {fileID: 740813817}
   ValueImageSkip: 0
