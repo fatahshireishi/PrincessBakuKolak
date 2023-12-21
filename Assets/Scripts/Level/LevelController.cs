@@ -10,6 +10,11 @@ public class LevelController : MonoBehaviour
     [SerializeField] float DurationTransition;
     public string nextScene;
 
+    private void Start() {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel());

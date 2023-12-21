@@ -11,7 +11,7 @@ public class PrologManager : MonoBehaviour
     Vector3 targetPosition;
 
     [SerializeField] LevelController levelController;
-    [SerializeField] float durationMove = 15f;
+    [SerializeField] float durationMove = 8f;
     [SerializeField] float speedSkip = 15f;
     [SerializeField] Image imageSkip;
     bool isSkip;
@@ -25,9 +25,9 @@ public class PrologManager : MonoBehaviour
         StartCoroutine(PlaySound());
         imageSkip.transform.localScale = Vector3.zero;
         targetPosition.y = -transform.position.y;
-        transform.DOMoveY(targetPosition.y, durationMove).OnComplete(() =>
+        transform.DOMoveY(targetPosition.y, durationMove).SetDelay(1.8f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            levelController.LoadNextLevel();
+            DOVirtual.DelayedCall(1f,() => levelController.LoadNextLevel());
         });
     }
 
