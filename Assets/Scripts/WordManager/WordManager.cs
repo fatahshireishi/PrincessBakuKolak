@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -15,6 +16,8 @@ public class WordManager : MonoBehaviour
     bool hasActiveWord;
     [HideInInspector]
     public bool isGameOver = false;
+
+    string wordCorrect;
 
     float Proggres;
 
@@ -39,12 +42,14 @@ public class WordManager : MonoBehaviour
     {
         if (hasActiveWord)
         {
-            if (activeWord.GetNextLetter() == letter)
+            if (activeWord.GetLetter(letter))
             {
-                activeWord.TypeLetter();
+                //AudioManager.Instance.PlaySound("Typing");
+                activeWord.TypeLetter(letter);
             }
             else
             {
+                //AudioManager.Instance.PlaySound("TypingWrong");
                 GameManager.Instance.MultipleProggresEnemy(activeWord.enemyPlusProggres);
                 activeWord.WrongLetter();
             }
@@ -53,11 +58,11 @@ public class WordManager : MonoBehaviour
         {
             foreach (Word word in words)
             {
-                if (word.GetNextLetter() == letter)
+                if (word.GetLetter(letter))
                 {
                     activeWord = word;
                     hasActiveWord = true;
-                    activeWord.TypeLetter();
+                    activeWord.TypeLetter(letter);
                     break;
                 }
             }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -15,12 +16,18 @@ public class WordDisplay : MonoBehaviour
     string wordCurrent;
     string letter;
     string letterColor;
+    string wordDefault;
 
+    private void Start()
+    {
+        
+    }
 
     public void SetWord(string _word)
     {
         wordCurrent = _word;/*(robin)*/
         text.text = wordCurrent;
+        wordDefault = _word;
     }
 
     public void EditLetter(char word)
@@ -74,5 +81,10 @@ public class WordDisplay : MonoBehaviour
     public void RemoveWord()
     {
         if (gameObject != null) Destroy(gameObject);
+    }
+
+    public void Reset()
+    {
+        text.text = wordDefault;
     }
 }
