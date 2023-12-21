@@ -9,23 +9,38 @@ public class GameManager : MonoBehaviour
     [SerializeField] CharacterPose playerPose;
     [SerializeField] CharacterPose enemyPose;
 
+    [Space(10.0f)]
     [SerializeField] GaugeManager gaugePlayer;
     [SerializeField] GaugeManager gaugeEnemy;
 
+    [Space(10.0f)]
     [SerializeField] WordGenerator wordGenerator;
 
+    [Space(10.0f)]
     [SerializeField] SpawnCharacterAttack spawnPlayerAttack;
     [SerializeField] SpawnCharacterAttack spawnEnemyAttack;
 
+    [Space(10.0f)]
     [SerializeField] Enemy enemy;
 
+    [Space(10.0f)]
     [SerializeField] WordManager wordManager;
 
+    [Space(10.0f)]
     [SerializeField] LevelController levelController;
+
+    [Space(10.0f)]
+    [SerializeField] GameObject pausePanel;
+    bool isPause;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
+    }
+
+    private void Start()
+    {
+        AudioManager.Instance.PlaySound("Medieval");
     }
 
     public void ChangePoseCharacter(bool isPlayer)
@@ -101,11 +116,11 @@ public class GameManager : MonoBehaviour
         wordManager.WordGameOver();
     }
 
-    public void SpawnTyping(Vector3 position)
+    public void SpawnTyping(Vector3 pos)
     {
         if (wordManager.isGameOver) return;
 
-        wordManager.AddWord(position);
+        wordManager.AddWord(pos);
     }
 
     public void MultipleProggresEnemy(float newMultiple)
@@ -123,7 +138,30 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Pause");
+            if(!isPause)
+            {
+                Pause();
+            }
+            else
+            {
+                Resume();
+            }
         }
+    }
+
+    public void Pause()
+    {
+        isPause = true;
+        Time.timeScale = 0.0f;
+        pausePanel.gameObject.SetActive(true);
+        wordManager.HideWord(true);
+    }
+
+    public void Resume()
+    {
+        isPause = false;
+        Time.timeScale = 1.0f;
+        pausePanel.gameObject.SetActive(false);
+        wordManager.HideWord(false);
     }
 }

@@ -32,6 +32,13 @@ public class SpawnCharacterAttack : MonoBehaviour
                 {
                     GameManager.Instance.ShowCharacter(isCharacter, true);
                     GameManager.Instance.LoadLevel();
+
+                    AudioManager.Instance.StopSound("MainTheme", 0.3f);
+                    AudioManager.Instance.StopSound("Medieval", 0.3f);
+
+                    if (isCharacter) AudioManager.Instance.PlaySound("Victory");
+                    else AudioManager.Instance.PlaySound("Defeat");
+
                     Destroy(gameObject);
                 });
             });

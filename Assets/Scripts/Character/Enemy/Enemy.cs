@@ -32,6 +32,8 @@ public class Enemy : MonoBehaviour
                 {
                     GameManager.Instance.EnemyAttack();
                     Data.isPlayerWin = false;
+                    AudioManager.Instance.StopSound("Medieval", 0.2f);
+                    AudioManager.Instance.PlaySound("EnemyWin");
                     return;
                 }
                 ResetValue();

@@ -12,15 +12,20 @@ public class LevelController : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        StartCoroutine(LoadLevel());
+        StartCoroutine(LoadLevel(nextScene));
     }
 
-    IEnumerator LoadLevel()
+    IEnumerator LoadLevel(string sceneName)
     {
         anim.SetTrigger("Start");
 
         yield return new WaitForSeconds(DurationTransition);
 
-        SceneManager.LoadScene(nextScene);
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadNewLevel(string sceneName)
+    {
+        StartCoroutine(LoadLevel(sceneName));
     }
 }

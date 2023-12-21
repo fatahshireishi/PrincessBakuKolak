@@ -44,12 +44,12 @@ public class WordManager : MonoBehaviour
         {
             if (activeWord.GetLetter(letter))
             {
-                //AudioManager.Instance.PlaySound("Typing");
+                AudioManager.Instance.PlaySound("Typing");
                 activeWord.TypeLetter(letter);
             }
             else
             {
-                //AudioManager.Instance.PlaySound("TypingWrong");
+                AudioManager.Instance.PlaySound("TypingWrong");
                 activeWord.WrongLetter();
                 spawner.SpawnTyping(letter.ToString(), activeWord.GetLocationWord(), GameManager.Instance.GetPositionGauge(false), activeWord.enemyPlusProggres);
             }
@@ -63,7 +63,7 @@ public class WordManager : MonoBehaviour
                     words[i].TypeLetter(letter);
                     hasActiveWord = true;
                     activeWord = words[i];
-                    //AudioManager.Instance.PlaySound("Typing");
+                    AudioManager.Instance.PlaySound("Typing");
                     break;
                 }
             }
@@ -81,6 +81,7 @@ public class WordManager : MonoBehaviour
             {
                 Data.isPlayerWin = true;
                 GameManager.Instance.PlayerAttack();
+                AudioManager.Instance.PlaySound("PlayerWin");
                 return;
             }
             words.Remove(activeWord);
@@ -96,6 +97,14 @@ public class WordManager : MonoBehaviour
         words.Clear();
 
         isGameOver = true;
+    }
+
+    public void HideWord(bool isShow)
+    {
+        for (int i = 0; i < words.Count; i++)
+        {
+            words[i].wordDisplay.gameObject.SetActive(!isShow);
+        }
     }
 }
 
