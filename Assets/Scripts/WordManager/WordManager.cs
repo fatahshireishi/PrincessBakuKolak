@@ -17,8 +17,6 @@ public class WordManager : MonoBehaviour
     [HideInInspector]
     public bool isGameOver = false;
 
-    string wordCorrect;
-
     float Proggres;
 
     // Start is called before the first frame update
@@ -40,6 +38,8 @@ public class WordManager : MonoBehaviour
 
     public void TypeLetter(char letter)
     {
+        if (isGameOver) return;
+
         if (hasActiveWord)
         {
             if (activeWord.GetLetter(letter))
@@ -50,19 +50,20 @@ public class WordManager : MonoBehaviour
             else
             {
                 //AudioManager.Instance.PlaySound("TypingWrong");
-                GameManager.Instance.MultipleProggresEnemy(activeWord.enemyPlusProggres);
                 activeWord.WrongLetter();
+                spawner.SpawnTyping(letter.ToString(), activeWord.GetLocationWord(), GameManager.Instance.GetPositionGauge(false), activeWord.enemyPlusProggres);
             }
         }
         else
         {
-            foreach (Word word in words)
+            for (int i = 0;i < words.Count;i++)
             {
-                if (word.GetLetter(letter))
+                if (words[i].GetLetter(letter))
                 {
-                    activeWord = word;
+                    words[i].TypeLetter(letter);
                     hasActiveWord = true;
-                    activeWord.TypeLetter(letter);
+                    activeWord = words[i];
+                    //AudioManager.Instance.PlaySound("Typing");
                     break;
                 }
             }
@@ -72,7 +73,7 @@ public class WordManager : MonoBehaviour
         {
             hasActiveWord = false;
             Proggres += activeWord.proggres;
-            spawner.SpawnTyping(activeWord.word, activeWord.GetLocationWord(), GameManager.Instance.GetPositionGauge(true));
+            spawner.SpawnNewWord(activeWord.word, activeWord.GetLocationWord(), GameManager.Instance.GetPositionGauge(true));
             GameManager.Instance.ChangePoseCharacter(true);
             GameManager.Instance.FillGaugecharacter(true, Proggres);
             // Win Condition

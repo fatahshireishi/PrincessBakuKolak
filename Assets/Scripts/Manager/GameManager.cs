@@ -118,4 +118,12 @@ public class GameManager : MonoBehaviour
         LevelController newLevel = Instantiate(levelController, Vector3.zero, Quaternion.identity).GetComponent<LevelController>();
         newLevel.LoadNextLevel();
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Pause");
+        }
+    }
 }

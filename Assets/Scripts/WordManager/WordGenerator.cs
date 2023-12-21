@@ -6,11 +6,13 @@ using UnityEngine;
 public class WordGenerator : MonoBehaviour
 {
     [SerializeField] List<WordSO> wordList = new List<WordSO>();
+    int wordIndex = 0;
 
     public WordSO GetRandomWord()
     {
-        int randomIndex = UnityEngine.Random.Range(0, wordList.Count);
-        WordSO randomWord = wordList[randomIndex];
+        WordSO randomWord = wordList[wordIndex];
+        wordIndex += 1;
+        if (wordIndex >= wordList.Count) wordIndex = 0;
 
         return randomWord;
     }

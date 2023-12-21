@@ -22,7 +22,9 @@ public class Word
         word = _word.name;
         proggres = _word.proggres;
         enemyPlusProggres = _word.enemyPlusProggres;
+
         typeIndex = 0;
+
         wordDisplay = _wordDisplay;
         wordDisplay.SetWord(word);
     }
@@ -61,7 +63,7 @@ public class Word
 
     public Vector3 GetLocationWord()
     {
-        return wordDisplay.transform.position;
+        return wordDisplay != null ? wordDisplay.transform.position : Vector3.zero;
     }
 
     public void Reset()

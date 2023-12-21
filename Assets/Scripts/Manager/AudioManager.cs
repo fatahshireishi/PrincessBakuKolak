@@ -27,11 +27,11 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(string soundName)
     {
-        if (sounds.Length == 0) return;
+        if (Instance == null) return;
 
         Sound sound = Array.Find(sounds, s => s.name == soundName);
 
-        if (sound == null) return;
+        if (sound == null && sound.sound == null) return;
 
         sound.source.Play();
         Debug.Log(sound.name);
@@ -39,9 +39,11 @@ public class AudioManager : MonoBehaviour
 
     public void StopSound(string soundName, float Duration)
     {
+        if (Instance == null) return;
+
         Sound sound = Array.Find(sounds, s => s.name == soundName);
 
-        if(sound == null) return;
+        if (sound == null) return;
 
         sound.source.DOFade(0, Duration).OnComplete(() =>
         {
