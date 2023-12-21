@@ -9,7 +9,9 @@ using UnityEngine;
 public class Word
 {
     public string word;
+    string wordCorrect;
     public float proggres;
+    public float enemyPlusProggres;
 
     public int typeIndex;
 
@@ -19,20 +21,32 @@ public class Word
     {
         word = _word.name;
         proggres = _word.proggres;
+        enemyPlusProggres = _word.enemyPlusProggres;
         typeIndex = 0;
         wordDisplay = _wordDisplay;
         wordDisplay.SetWord(word);
     }
 
-    public char GetNextLetter()
+    public bool GetLetter(char type)
     {
-        return word[typeIndex];
+        return word[typeIndex] == type;
     }
 
-    public void TypeLetter()
+    public void TypeLetter(char type)
     {
-        wordDisplay.EditLetter(word[typeIndex]);
+        wordDisplay.EditLetter(type);
+        wordCorrect += type;
         typeIndex++;
+    }
+
+    public bool CorrectWord(string word)
+    {
+        return wordCorrect == word;
+    }
+
+    public void WrongLetter()
+    {
+        wordDisplay.EditWrongLetter();
     }
 
     public bool WordTyped()
@@ -48,5 +62,16 @@ public class Word
     public Vector3 GetLocationWord()
     {
         return wordDisplay.transform.position;
+    }
+
+    public void Reset()
+    {
+        wordDisplay.Reset();
+        typeIndex = 0;
+    }
+
+    public bool OnLetter()
+    {
+        return typeIndex > 1;
     }
 }

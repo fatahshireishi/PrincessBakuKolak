@@ -10,11 +10,13 @@ public class GaugeManager : MonoBehaviour
     private void Awake()
     {
         image = GetComponent<Image>();
-        image.fillAmount = 0;
+        image.gameObject.transform.localScale = new Vector3(0f, 0f, 0f);
     }
 
     public void FillImage(float fill)
     {
-        image.fillAmount = fill;
+        if (fill >= 1.0f) fill = 1.0f;
+
+        image.gameObject.transform.localScale = new Vector3(fill, fill, fill);
     }
 }

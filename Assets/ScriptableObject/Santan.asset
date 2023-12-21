@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Santan
   proggres: 0.1
+  enemyPlusProggres: 0.03

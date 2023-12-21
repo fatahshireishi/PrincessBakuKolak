@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static System.Net.Mime.MediaTypeNames;
@@ -12,11 +15,19 @@ public class WordDisplay : MonoBehaviour
 
     string wordCurrent;
     string letter;
+    string letterColor;
+    string wordDefault;
+
+    private void Start()
+    {
+        
+    }
 
     public void SetWord(string _word)
     {
         wordCurrent = _word;/*(robin)*/
         text.text = wordCurrent;
+        wordDefault = _word;
     }
 
     public void EditLetter(char word)
@@ -30,7 +41,7 @@ public class WordDisplay : MonoBehaviour
          * (robin)
          */
 
-        string LetterColor = "<color=#fff321>" + letter + "</color>";
+         letterColor = "<color=#fff321>" + letter + "</color>";
         /*
          * (r(Color yellow))
          * (ro(Color yellow))
@@ -48,7 +59,7 @@ public class WordDisplay : MonoBehaviour
          * ()
          */
 
-        text.text = LetterColor + wordCurrent;
+        text.text = letterColor + wordCurrent;
         /*
          * (r(color yellow)obin)
          * (ro(color yellow)bin)
@@ -58,8 +69,22 @@ public class WordDisplay : MonoBehaviour
          */
     }
 
+    public void EditWrongLetter()
+    {
+        char TypeWrong = wordCurrent[0];
+        string wrongLetterCol = letterColor + "<color=#FF0000>" + "<b>" + TypeWrong + "</b>" + "</color>";
+        wordCurrent = wordCurrent.Remove(0, 1);
+        text.text = wrongLetterCol + wordCurrent;
+        wordCurrent = TypeWrong + wordCurrent;
+    }
+
     public void RemoveWord()
     {
-        Destroy(gameObject);
+        if (gameObject != null) Destroy(gameObject);
+    }
+
+    public void Reset()
+    {
+        text.text = wordDefault;
     }
 }

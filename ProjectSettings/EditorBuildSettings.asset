@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: aac18a67f87e9854b938fea51c801633
+  - enabled: 1
+    path: Assets/Scenes/Prolog.unity
+    guid: 64bb162f10675ca4293cac092ff77487
+  - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 409406a546fd77841b40da7400c4a60e
   m_configObjects: {}

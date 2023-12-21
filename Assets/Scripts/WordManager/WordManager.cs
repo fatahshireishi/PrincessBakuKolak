@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,6 +14,10 @@ public class WordManager : MonoBehaviour
     [SerializeField] List<Transform> spawnLocation;
 
     bool hasActiveWord;
+    [HideInInspector]
+    public bool isGameOver = false;
+
+    string wordCorrect;
 
     float Proggres;
 
@@ -25,7 +31,7 @@ public class WordManager : MonoBehaviour
         }
     }
 
-    private void AddWord(Vector3 position)
+    public void AddWord(Vector3 position)
     {
         Word word = new Word(GameManager.Instance.GenerateNewWord(), spawner.SpawnWord(position));
 
@@ -36,20 +42,27 @@ public class WordManager : MonoBehaviour
     {
         if (hasActiveWord)
         {
-            if (activeWord.GetNextLetter() == letter)
+            if (activeWord.GetLetter(letter))
             {
-                activeWord.TypeLetter();
+                //AudioManager.Instance.PlaySound("Typing");
+                activeWord.TypeLetter(letter);
+            }
+            else
+            {
+                //AudioManager.Instance.PlaySound("TypingWrong");
+                GameManager.Instance.MultipleProggresEnemy(activeWord.enemyPlusProggres);
+                activeWord.WrongLetter();
             }
         }
         else
         {
             foreach (Word word in words)
             {
-                if (word.GetNextLetter() == letter)
+                if (word.GetLetter(letter))
                 {
                     activeWord = word;
                     hasActiveWord = true;
-                    activeWord.TypeLetter();
+                    activeWord.TypeLetter(letter);
                     break;
                 }
             }
@@ -59,23 +72,29 @@ public class WordManager : MonoBehaviour
         {
             hasActiveWord = false;
             Proggres += activeWord.proggres;
-            GameManager.Instance.ChangePoseCharacter(true, Random.Range(0, 5));
+            spawner.SpawnTyping(activeWord.word, activeWord.GetLocationWord(), GameManager.Instance.GetPositionGauge(true));
+            GameManager.Instance.ChangePoseCharacter(true);
             GameManager.Instance.FillGaugecharacter(true, Proggres);
             // Win Condition
             if (Proggres >= 1)
             {
+                Data.isPlayerWin = true;
                 GameManager.Instance.PlayerAttack();
-                GameManager.Instance.CharacterLose(false);
-                for (int i = 0; i < words.Count; i++)
-                {
-                    Destroy(words[i].wordDisplay.gameObject);
-                }
-                words.Clear();
                 return;
             }
-            AddWord(activeWord.GetLocationWord());
             words.Remove(activeWord);
         }
+    }
+
+    public void WordGameOver()
+    {
+        for (int i = 0; i < words.Count; i++)
+        {
+            Destroy(words[i].wordDisplay.gameObject);
+        }
+        words.Clear();
+
+        isGameOver = true;
     }
 }
 

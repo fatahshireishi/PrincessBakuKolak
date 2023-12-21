@@ -31,6 +31,7 @@ public class SpawnCharacterAttack : MonoBehaviour
                 gameObject.transform.DOMoveX(startPosition.x, duration[2]).OnComplete(() =>
                 {
                     GameManager.Instance.ShowCharacter(isCharacter, true);
+                    GameManager.Instance.LoadLevel();
                     Destroy(gameObject);
                 });
             });

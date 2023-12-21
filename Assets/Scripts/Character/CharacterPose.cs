@@ -9,20 +9,22 @@ public class CharacterPose : MonoBehaviour
 
     SpriteRenderer sprite;
 
+    int poseIndex;
+
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
+        poseIndex = 0;
     }
 
-    public void GetPoseCharacter(int poseIndex)
+    public void GetPoseCharacter()
     {
-        for (int i = 0; i < charPose.Count; i++)
+        poseIndex += 1;
+        if (poseIndex >= charPose.Count)
         {
-            if(i == poseIndex)
-            {
-                sprite.sprite = charPose[i];
-            }
+            poseIndex = 0;
         }
+        sprite.sprite = charPose[poseIndex];
     }
 
     public void GetPoseCharacterLose()

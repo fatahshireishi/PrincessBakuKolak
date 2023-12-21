@@ -8,4 +8,6 @@ public class WordSO : ScriptableObject
     public new string name;
 
     public float proggres;
+
+    public float enemyPlusProggres;
 }
