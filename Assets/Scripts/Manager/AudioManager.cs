@@ -34,7 +34,6 @@ public class AudioManager : MonoBehaviour
         if (sound == null && sound.sound == null) return;
 
         sound.source.Play();
-        Debug.Log(sound.name);
     }
 
     public void StopSound(string soundName, float Duration)
